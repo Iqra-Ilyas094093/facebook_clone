@@ -1,12 +1,10 @@
 import 'package:facebook_clone/utilities/palette.dart';
-import 'package:facebook_clone/views/widgets/circleButton.dart';
-import 'package:facebook_clone/views/widgets/create_post_container.dart';
+import 'package:facebook_clone/views/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../data/data.dart';
-
-
+import '../model/model.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
@@ -30,13 +28,30 @@ class Homescreen extends StatelessWidget {
               ),
             ),
             actions: [
-              Circlebutton(icon: Icons.search, iconSize: 30,),
+              Circlebutton(icon: Icons.search, iconSize: 30),
               Circlebutton(icon: MdiIcons.facebookMessenger, iconSize: 30),
             ],
           ),
           SliverToBoxAdapter(
-            child: CreatePostContainer(currentUser: currentUser)
-          )
+            child: CreatePostContainer(currentUser: currentUser),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            sliver: SliverToBoxAdapter(child: Room(onlineUsers: onlineUsers)),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 5),
+            sliver: SliverToBoxAdapter(
+              child: CreateStories(stories: stories, user: currentUser),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final Post post = posts[index];
+              return AddPostContainer(post: post);
+            },childCount: posts.length),
+
+          ),
         ],
       ),
     );

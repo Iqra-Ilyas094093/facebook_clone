@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_clone/utilities/palette.dart';
 import 'package:facebook_clone/views/widgets/categoryButton.dart';
+import 'package:facebook_clone/views/widgets/profileAvatar.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/model.dart';
@@ -21,11 +22,7 @@ class CreatePostContainer extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Palette.facebookColor,
-                  backgroundImage: NetworkImage(currentUser.imageUrl),
-                ),
+                Profileavatar(imageUrl: currentUser.imageUrl),
                 SizedBox(width: 8),
                 Expanded(
                   child: TextField(
