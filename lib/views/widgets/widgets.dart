@@ -5,3 +5,8 @@ export 'create_post_container.dart';
 export 'profileAvatar.dart';
 export 'CreateStories.dart';
 export 'addPostContainer.dart';
+export 'responsive.dart';
+export 'CustomNavigationBar.dart';
+export 'custom_tab_bar.dart';
+export 'user_card.dart';
+export 'Additionalfeatures.dart';

@@ -15,7 +15,7 @@ class CreateStories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      color: Colors.white,
+      color: Responsive.isDesktop(context)?Colors.transparent:Colors.white,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
         scrollDirection: Axis.horizontal,

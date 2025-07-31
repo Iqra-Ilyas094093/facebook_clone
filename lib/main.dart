@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           visualDensity: VisualDensity.adaptivePlatformDensity,primarySwatch: Colors.blue),
-      home: Homescreen(),
+      home: Navscreen(),
     );
   }
 }

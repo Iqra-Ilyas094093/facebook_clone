@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_clone/utilities/palette.dart';
 import 'package:facebook_clone/views/widgets/categoryButton.dart';
 import 'package:facebook_clone/views/widgets/profileAvatar.dart';
+import 'package:facebook_clone/views/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/model.dart';
@@ -13,29 +14,36 @@ class AddPostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            postHeader(post: post),
-            SizedBox(height: 4),
-            Text(post.caption),
-            post.imageUrl != null
-                ? const SizedBox(height: 4)
-                : const SizedBox.shrink(),
-            post.imageUrl != null
-                ? CachedNetworkImage(
-                  imageUrl: post.imageUrl!,
-                  width: double.infinity,
-                )
-                : SizedBox(),
-            postSocialDetails(post: post),
-          ],
+    return Card(
+      elevation: 0,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: Responsive.isDesktop(context)?BorderRadius.circular(20):null,
+        ),
+
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              postHeader(post: post),
+              SizedBox(height: 4),
+              Text(post.caption),
+              post.imageUrl != null
+                  ? const SizedBox(height: 4)
+                  : const SizedBox.shrink(),
+              post.imageUrl != null
+                  ? CachedNetworkImage(
+                    imageUrl: post.imageUrl!,
+                    width: double.infinity,
+                  )
+                  : SizedBox(),
+              postSocialDetails(post: post),
+            ],
+          ),
         ),
       ),
     );

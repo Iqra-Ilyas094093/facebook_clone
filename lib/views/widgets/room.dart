@@ -1,6 +1,7 @@
 import 'package:facebook_clone/data/data.dart';
 import 'package:facebook_clone/utilities/palette.dart';
 import 'package:facebook_clone/views/widgets/profileAvatar.dart';
+import 'package:facebook_clone/views/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,23 +14,30 @@ class Room extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      color: Colors.white,
-      child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 10),
-        scrollDirection: Axis.horizontal,
-        itemCount: 1 + onlineUsers.length,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return OutlineCreateRoom();
-          }
-          final User user = onlineUsers[index - 1];
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Profileavatar(imageUrl: user.imageUrl, isActive: true),
-          );
-        },
+    return Card(
+      elevation: 0,
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: Responsive.isDesktop(context)?BorderRadius.circular(20):null,
+        ),
+
+        child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+          scrollDirection: Axis.horizontal,
+          itemCount: 1 + onlineUsers.length,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return OutlineCreateRoom();
+            }
+            final User user = onlineUsers[index - 1];
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Profileavatar(imageUrl: user.imageUrl, isActive: true),
+            );
+          },
+        ),
       ),
     );
   }
